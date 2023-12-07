@@ -8,7 +8,53 @@
 </head>
 
 <body>
+    <canvas width="600" height="600"></canvas>
 
+
+    <script>
+        let canvas = document.querySelector('canvas');
+        let context = canvas.getContext("2d");
+
+        // ******** draw a rectangle with a blue fill *************
+        // context.fillStyle = "blue";
+        // context.fillRect(100, 100, 400, 400);
+
+        // ******** draw a rectangle with a stroke *************
+        // context.lineWidth = 4;
+        // context.beginPath();
+        // context.rect(100, 100, 400, 400);
+        // context.stroke();
+
+        // ******** draw a circle with a stroke *************
+        // context.lineWidth = 4;  
+        // context.beginPath();
+        // context.arc(300, 300, 100, 0, 2 * Math.PI);
+        // context.stroke();
+
+        const width = 60;
+        const height = 60;
+        const gap = 20;
+        let x, y;
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                x = 100 + i * (width + gap);
+                y = 100 + j * (height + gap);
+
+                context.beginPath();
+                context.lineWidth = 4;
+                context.rect(x, y, width, height);
+                context.stroke();
+
+                //lets add a condition
+                if (Math.random() > 0.5) {
+                    // small square inside large square
+                    context.beginPath();
+                    context.rect(x + 8, y + 8, width - 16, height - 16);
+                    context.stroke();
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>
